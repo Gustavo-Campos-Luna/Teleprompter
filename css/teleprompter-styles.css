@@ -1,0 +1,424 @@
+/**
+ * Teleprompter Styles - Professional Teleprompter
+ * Estilos específicos del teleprompter
+ * Autor: Gustavo Campos Luna
+ */
+
+/* === CONTENEDOR PRINCIPAL DEL TELEPROMPTER === */
+.teleprompter {
+    background: var(--color-black);
+    border-radius: var(--border-radius-2xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-2xl), 0 0 60px rgba(0, 0, 0, 0.5);
+    position: relative;
+    height: 600px;
+    animation: fadeInUp var(--transition-slow) 0.2s;
+}
+
+.teleprompter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* === CONTENIDO DEL TELEPROMPTER === */
+.teleprompter-content {
+    color: var(--color-white);
+    padding: var(--spacing-3xl) var(--spacing-2xl);
+    line-height: 1.8;
+    text-align: center;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+}
+
+.teleprompter-content.mirror-mode {
+    transform: scaleX(-1);
+}
+
+/* === TEXTO CON SCROLL === */
+.scroll-text {
+    transition: transform 0.1s linear;
+    width: 100%;
+    will-change: transform;
+}
+
+.scroll-text p {
+    margin-bottom: var(--spacing-lg);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    animation: fadeIn var(--transition-base);
+}
+
+.scroll-text p:empty {
+    display: none;
+}
+
+/* === MARCADORES === */
+.text-marker {
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(102, 126, 234, 0.3),
+        transparent
+    );
+    padding: var(--spacing-sm) 0;
+    border-left: 4px solid var(--color-primary-start);
+    border-right: 4px solid var(--color-primary-start);
+    position: relative;
+}
+
+.text-marker::before {
+    content: '★';
+    position: absolute;
+    left: -30px;
+    color: var(--color-secondary-orange);
+    font-size: var(--font-size-xl);
+    animation: pulse 2s infinite;
+}
+
+/* === INDICADORES DE ESTADO === */
+.status-indicator {
+    position: absolute;
+    top: var(--spacing-lg);
+    right: var(--spacing-lg);
+    background: rgba(0, 0, 0, 0.7);
+    color: var(--color-white);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--border-radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    animation: slideInRight var(--transition-base);
+}
+
+.status-indicator__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-gray-400);
+    animation: pulse 2s infinite;
+}
+
+.status-indicator.playing .status-indicator__dot {
+    background: var(--color-secondary-green);
+    box-shadow: 0 0 10px var(--color-secondary-green);
+}
+
+.status-indicator.paused .status-indicator__dot {
+    background: var(--color-secondary-orange);
+    box-shadow: 0 0 10px var(--color-secondary-orange);
+}
+
+.status-indicator.stopped .status-indicator__dot {
+    background: var(--color-secondary-red);
+}
+
+/* === BARRA DE PROGRESO === */
+.progress-bar-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 10;
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--gradient-primary);
+    transition: width 0.1s linear;
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.8);
+    position: relative;
+}
+
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -2px;
+    width: 8px;
+    height: 8px;
+    background: var(--color-white);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* === TEMPORIZADOR === */
+.timer-display {
+    position: absolute;
+    top: var(--spacing-lg);
+    left: var(--spacing-lg);
+    background: rgba(0, 0, 0, 0.7);
+    color: var(--color-white);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--border-radius-lg);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    animation: slideInLeft var(--transition-base);
+}
+
+.timer-display__time {
+    font-size: var(--font-size-3xl);
+    letter-spacing: 0.1em;
+}
+
+.timer-display__label {
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    opacity: 0.7;
+    letter-spacing: 0.05em;
+}
+
+/* === ESTADÍSTICAS === */
+.stats-overlay {
+    position: absolute;
+    bottom: var(--spacing-2xl);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--color-white);
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-radius: var(--border-radius-xl);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    z-index: 10;
+    display: flex;
+    gap: var(--spacing-xl);
+    font-size: var(--font-size-sm);
+    animation: slideInUp var(--transition-base);
+}
+
+.stats-overlay__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.stats-overlay__value {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-mono);
+}
+
+.stats-overlay__label {
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    opacity: 0.7;
+    letter-spacing: 0.05em;
+}
+
+/* === MODO PANTALLA COMPLETA === */
+.teleprompter.fullscreen {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: var(--z-index-fullscreen);
+    border-radius: 0 !important;
+    max-width: none !important;
+    max-height: none !important;
+}
+
+.teleprompter.fullscreen .teleprompter-content {
+    padding: var(--spacing-4xl) var(--spacing-2xl);
+}
+
+/* === CONTROLES EN PANTALLA COMPLETA === */
+.fullscreen-controls {
+    position: fixed;
+    top: var(--spacing-xl);
+    right: var(--spacing-xl);
+    display: none;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    z-index: calc(var(--z-index-fullscreen) + 1);
+    animation: slideInRight var(--transition-base);
+}
+
+.fullscreen-controls.visible {
+    display: flex;
+}
+
+.fullscreen-controls.auto-hide {
+    animation: fadeOut var(--transition-base) forwards;
+}
+
+.fullscreen-control-panel {
+    background: rgba(0, 0, 0, 0.9);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-xl);
+    backdrop-filter: var(--glass-blur-strong);
+    -webkit-backdrop-filter: var(--glass-blur-strong);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    box-shadow: var(--shadow-2xl), 0 0 40px rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.fullscreen-btn {
+    width: 56px;
+    height: 56px;
+    border: none;
+    border-radius: var(--border-radius-lg);
+    background: rgba(102, 126, 234, 0.9);
+    color: var(--color-white);
+    font-size: var(--font-size-xl);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.fullscreen-btn:hover {
+    background: rgba(102, 126, 234, 1);
+    transform: scale(1.1);
+    box-shadow: var(--shadow-glow-strong);
+}
+
+.fullscreen-btn:active {
+    transform: scale(0.95);
+}
+
+.fullscreen-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.fullscreen-btn-exit {
+    background: rgba(239, 68, 68, 0.9);
+    border: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.fullscreen-btn-exit:hover {
+    background: rgba(239, 68, 68, 1);
+    box-shadow: 0 6px 15px rgba(239, 68, 68, 0.6);
+}
+
+/* === NOTAS DEL PRESENTADOR === */
+.presenter-notes {
+    position: absolute;
+    bottom: var(--spacing-2xl);
+    left: var(--spacing-2xl);
+    right: var(--spacing-2xl);
+    background: rgba(0, 0, 0, 0.9);
+    color: var(--color-secondary-orange);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-xl);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 2px solid rgba(255, 200, 0, 0.5);
+    z-index: 9;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    max-height: 20%;
+    overflow-y: auto;
+    display: none;
+    animation: slideInUp var(--transition-base);
+}
+
+.presenter-notes.visible {
+    display: block;
+}
+
+.presenter-notes__title {
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: 0.05em;
+}
+
+/* === FADE GRADIENTS === */
+.teleprompter::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to bottom, var(--color-black), transparent);
+    pointer-events: none;
+    z-index: 5;
+}
+
+.teleprompter-content::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to top, var(--color-black), transparent);
+    pointer-events: none;
+}
+
+/* === GUÍAS DE LECTURA === */
+.reading-guide {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--color-secondary-cyan);
+    box-shadow: 0 0 20px var(--color-secondary-cyan);
+    z-index: 15;
+    animation: pulse 2s infinite;
+}
+
+.reading-guide.top {
+    top: 30%;
+}
+
+.reading-guide.center {
+    top: 50%;
+}
+
+.reading-guide.bottom {
+    top: 70%;
+}
+
+/* === FOCUS ZONE === */
+.focus-zone {
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    top: 40%;
+    bottom: 40%;
+    border: 2px dashed rgba(102, 126, 234, 0.3);
+    border-radius: var(--border-radius-lg);
+    pointer-events: none;
+    z-index: 3;
+    animation: fadeIn 2s;
+}

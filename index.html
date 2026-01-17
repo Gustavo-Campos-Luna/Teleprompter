@@ -2,808 +2,330 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teleprompter Profesional</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Teleprompter profesional con características avanzadas: modo espejo, temporizador, marcadores, múltiples temas y más.">
+    <meta name="keywords" content="teleprompter, prompter, presentaciones, videos, producción, profesional">
+    <meta name="author" content="Gustavo Campos Luna">
+    <meta name="theme-color" content="#667eea">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Teleprompter Profesional 2.0">
+    <meta property="og:description" content="Teleprompter profesional con características avanzadas para presentaciones y producción de video.">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Teleprompter Profesional 2.0">
+    <meta property="twitter:description" content="Teleprompter profesional con características avanzadas.">
+
+    <title>Teleprompter Profesional 2.0</title>
+
+    <!-- Preconnect para optimización -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/main-styles.css">
+    <link rel="stylesheet" href="css/teleprompter-styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/keyboard-help.css">
+
+    <!-- Librería Mammoth.js para archivos Word -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: #333;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            color: white;
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .controls {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            margin-bottom: 20px;
-        }
-
-        .control-section {
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .control-section:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-        }
-
-        .control-section h3 {
-            margin-bottom: 15px;
-            color: #555;
-            font-size: 1.2rem;
-        }
-
-        .input-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .input-group label {
-            font-weight: 600;
-            color: #666;
-            min-width: 120px;
-        }
-
-        input[type="file"], textarea, select, input[type="range"], input[type="number"] {
-            padding: 10px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 14px;
-            transition: border-color 0.3s ease;
-        }
-
-        input[type="file"]:focus, textarea:focus, select:focus, input[type="number"]:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        textarea {
-            width: 100%;
-            min-height: 120px;
-            resize: vertical;
-            font-family: inherit;
-        }
-
-        select, input[type="number"] {
-            min-width: 120px;
-        }
-
-        input[type="range"] {
-            flex: 1;
-            min-width: 150px;
-        }
-
-        .range-value {
-            background: #667eea;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-weight: bold;
-            min-width: 60px;
-            text-align: center;
-        }
-
-        .buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        button {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        button:active {
-            transform: translateY(0);
-        }
-
-        button:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .teleprompter {
-            background: #000;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            position: relative;
-            height: 500px;
-        }
-
-        .teleprompter-content {
-            color: white;
-            padding: 40px;
-            line-height: 1.8;
-            text-align: center;
-            height: 100%;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .scroll-text {
-            transition: transform 0.1s linear;
-            width: 100%;
-        }
-
-        .status {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            background: rgba(255,255,255,0.2);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 15px;
-            font-size: 12px;
-            backdrop-filter: blur(10px);
-        }
-
-        .progress-bar {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            height: 3px;
-            background: #667eea;
-            transition: width 0.1s linear;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-            
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .controls {
-                padding: 20px;
-            }
-            
-            .input-group {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            
-            .input-group label {
-                min-width: auto;
-            }
-            
-            .buttons {
-                flex-direction: column;
-            }
-        }
-
-                    .file-info {
-            background: #e8f4fd;
-            border: 1px solid #b3d9ff;
-            border-radius: 8px;
-            padding: 10px;
-            margin-top: 10px;
-            font-size: 14px;
-            color: #0066cc;
-        }
-
-        /* Estilos para pantalla completa */
-        .fullscreen-btn {
-            background: linear-gradient(45deg, #28a745, #20c997);
-        }
-
-        .fullscreen-teleprompter {
-            position: fixed !important;
-            top: 0;
-            left: 0;
-            width: 100vw !important;
-            height: 100vh !important;
-            z-index: 9999;
-            border-radius: 0 !important;
-            max-width: none !important;
-            max-height: none !important;
-        }
-
-        .fullscreen-controls {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            display: none;
-            flex-direction: column;
-            gap: 8px;
-            z-index: 99999;
-            background: rgba(0, 0, 0, 0.9);
-            padding: 15px;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-        }
-
-        .fullscreen-controls button {
-            background: rgba(102, 126, 234, 0.9);
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            color: white;
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-shadow: 2px 2px 4px rgba(0,0,0,1);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        }
-
-        .fullscreen-controls button:hover {
-            background: rgba(102, 126, 234, 1);
-            transform: scale(1.1);
-            box-shadow: 0 6px 15px rgba(102, 126, 234, 0.6);
-        }
-
-        .fullscreen-controls button:disabled {
-            background: rgba(128, 128, 128, 0.7);
-            color: rgba(255, 255, 255, 0.5);
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .exit-fullscreen-btn {
-            position: fixed;
-            top: 20px;
-            right: 90px;
-            z-index: 99999;
-            background: rgba(220, 53, 69, 0.9) !important;
-            border: 3px solid rgba(255, 255, 255, 0.4) !important;
-            width: 50px;
-            height: 50px;
-            border-radius: 8px;
-            color: white;
-            font-size: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            display: none;
-            text-shadow: 2px 2px 4px rgba(0,0,0,1);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        }
-
-        .exit-fullscreen-btn:hover {
-            background: rgba(220, 53, 69, 1) !important;
-            transform: scale(1.1);
-            box-shadow: 0 6px 15px rgba(220, 53, 69, 0.6);
-        }
-
-        /* Asegurar que los controles siempre sean visibles en pantalla completa */
-        .fullscreen-teleprompter .fullscreen-controls {
-            display: flex !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
-
-        .fullscreen-teleprompter .exit-fullscreen-btn {
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>📺 Teleprompter Profesional</h1>
-            <p>Carga tu texto y ajusta la velocidad perfecta para tu presentación</p>
+    <!-- Contenedor principal -->
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <h1 class="app-header__title">
+                <span class="gradient-text">📺 Teleprompter Profesional</span>
+            </h1>
+            <p class="app-header__subtitle">
+                Presentaciones profesionales con tecnología avanzada
+            </p>
+        </header>
+
+        <!-- Panel de Control -->
+        <div class="control-panel">
+            <!-- Navegación por Tabs -->
+            <nav class="tabs-nav" role="tablist">
+                <button class="tab-button active" data-tab="content" role="tab" aria-selected="true">
+                    <span class="tab-icon">📄</span>
+                    Contenido
+                </button>
+                <button class="tab-button" data-tab="appearance" role="tab" aria-selected="false">
+                    <span class="tab-icon">🎨</span>
+                    Apariencia
+                </button>
+                <button class="tab-button" data-tab="playback" role="tab" aria-selected="false">
+                    <span class="tab-icon">⚡</span>
+                    Reproducción
+                </button>
+                <button class="tab-button" data-tab="advanced" role="tab" aria-selected="false">
+                    <span class="tab-icon">⚙️</span>
+                    Avanzado
+                </button>
+            </nav>
+
+            <!-- Tab: Contenido -->
+            <div id="content-tab" class="tab-content active" role="tabpanel">
+                <div class="control-section">
+                    <h3 class="control-section__title">
+                        <span class="control-section__icon">📄</span>
+                        Cargar Contenido
+                    </h3>
+                    <div class="input-group">
+                        <label class="input-label" for="file-input">Archivo Word</label>
+                        <input type="file" id="file-input" class="input" accept=".doc,.docx" aria-label="Cargar archivo Word">
+                    </div>
+                    <div id="file-info" class="file-info" style="display: none;"></div>
+
+                    <div class="input-group" style="margin-top: var(--spacing-lg);">
+                        <label class="input-label" for="text-input">Editor de Texto</label>
+                        <textarea
+                            id="text-input"
+                            class="textarea"
+                            placeholder="Escribe o pega tu guión aquí...
+
+Tips:
+• Presiona H para ver todos los atajos de teclado
+• Usa Ctrl+M para activar el modo espejo
+• Presiona Espacio para reproducir/pausar"
+                            aria-label="Editor de texto del teleprompter"
+                        ></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Apariencia -->
+            <div id="appearance-tab" class="tab-content" role="tabpanel">
+                <div class="control-section">
+                    <h3 class="control-section__title">
+                        <span class="control-section__icon">🎨</span>
+                        Fuente y Estilo
+                    </h3>
+
+                    <div class="grid-2col">
+                        <div class="input-group">
+                            <label class="input-label" for="font-family">Tipo de Letra</label>
+                            <select id="font-family" class="select" aria-label="Seleccionar tipo de letra"></select>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label" for="font-size">Tamaño</label>
+                            <input type="range" id="font-size" class="range-slider" min="16" max="120" value="32" aria-label="Ajustar tamaño de fuente">
+                            <span id="font-size-value" class="range-value">32px</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3 class="control-section__title">
+                        <span class="control-section__icon">🎨</span>
+                        Colores
+                    </h3>
+
+                    <div class="grid-2col">
+                        <div class="input-group">
+                            <label class="input-label" for="text-color">Color de Texto</label>
+                            <select id="text-color" class="select" aria-label="Seleccionar color de texto"></select>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label" for="bg-color">Fondo</label>
+                            <select id="bg-color" class="select" aria-label="Seleccionar color de fondo"></select>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label" for="theme">Tema</label>
+                        <select id="theme" class="select" aria-label="Seleccionar tema visual"></select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Reproducción -->
+            <div id="playback-tab" class="tab-content" role="tabpanel">
+                <div class="control-section">
+                    <h3 class="control-section__title">
+                        <span class="control-section__icon">⚡</span>
+                        Control de Velocidad
+                    </h3>
+
+                    <div class="input-group">
+                        <label class="input-label" for="speed">Velocidad</label>
+                        <input type="range" id="speed" class="range-slider" min="0.1" max="20" step="0.1" value="3" aria-label="Ajustar velocidad de scroll">
+                        <span id="speed-value" class="range-value">3</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label" for="custom-speed">Personalizada</label>
+                        <input type="number" id="custom-speed" class="input" min="0.1" max="20" step="0.1" value="3" aria-label="Velocidad personalizada">
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3 class="control-section__title">
+                        <span class="control-section__icon">📐</span>
+                        Opciones de Visualización
+                    </h3>
+
+                    <div class="input-group">
+                        <label class="input-label" for="reading-guide">Guía de Lectura</label>
+                        <select id="reading-guide" class="select" aria-label="Seleccionar posición de guía de lectura"></select>
+                    </div>
+
+                    <div class="input-group" style="flex-direction: column; align-items: flex-start;">
+                        <label style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                            <input type="checkbox" id="mirror-mode" aria-label="Activar modo espejo">
+                            <span>🔄 Modo Espejo (para cámaras)</span>
+                        </label>
+
+                        <label style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                            <input type="checkbox" id="show-timer" checked aria-label="Mostrar temporizador">
+                            <span>⏱️ Mostrar Temporizador</span>
+                        </label>
+
+                        <label style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                            <input type="checkbox" id="show-stats" checked aria-label="Mostrar estadísticas">
+                            <span>📊 Mostrar Estadísticas</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Avanzado -->
+            <div id="advanced-tab" class="tab-content" role="tabpanel">
+                <div class="control-section">
+                    <h3 class="control-section__title">
+                        <span class="control-section__icon">⚙️</span>
+                        Configuración Avanzada
+                    </h3>
+
+                    <div class="button-group">
+                        <button id="export-btn" class="btn btn-secondary">
+                            💾 Exportar Configuración
+                        </button>
+                        <button id="import-btn" class="btn btn-secondary">
+                            📥 Importar Configuración
+                        </button>
+                    </div>
+
+                    <div class="button-group" style="margin-top: var(--spacing-lg);">
+                        <button id="save-settings-btn" class="btn btn-primary">
+                            ✅ Guardar Configuración
+                        </button>
+                        <button id="reset-settings-btn" class="btn btn-danger">
+                            🔄 Restablecer Todo
+                        </button>
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3 class="control-section__title">
+                        <span class="control-section__icon">ℹ️</span>
+                        Información
+                    </h3>
+                    <div class="card">
+                        <div class="card__content">
+                            <p><strong>Versión:</strong> 2.0.0</p>
+                            <p><strong>Autor:</strong> Gustavo Campos Luna</p>
+                            <p><strong>Licencia:</strong> MIT</p>
+                            <p style="margin-top: var(--spacing-md);">
+                                <span class="badge">⌨️ Presiona H para ver atajos de teclado</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de Control Principal -->
+            <div class="button-group">
+                <button id="play-btn" class="btn btn-primary">
+                    ▶️ Reproducir
+                </button>
+                <button id="pause-btn" class="btn btn-primary" disabled>
+                    ⏸️ Pausar
+                </button>
+                <button id="stop-btn" class="btn btn-danger" disabled>
+                    ⏹️ Detener
+                </button>
+                <button id="reset-btn" class="btn btn-secondary">
+                    🔄 Reiniciar
+                </button>
+                <button id="fullscreen-btn" class="btn btn-success">
+                    🖥️ Pantalla Completa
+                </button>
+            </div>
         </div>
 
-        <div class="controls">
-            <!-- Sección de carga de archivo -->
-            <div class="control-section">
-                <h3>📄 Cargar Contenido</h3>
-                <div class="input-group">
-                    <label for="fileInput">Archivo Word:</label>
-                    <input type="file" id="fileInput" accept=".doc,.docx" />
-                </div>
-                <div id="fileInfo" class="file-info" style="display: none;"></div>
-                
-                <div class="input-group" style="margin-top: 15px;">
-                    <label for="textInput">O escribe tu texto:</label>
-                    <textarea id="textInput" placeholder="Escribe aquí tu guión o texto para el teleprompter..."></textarea>
+        <!-- Teleprompter -->
+        <div id="teleprompter" class="teleprompter" role="main" aria-label="Área del teleprompter">
+            <!-- Indicador de Estado -->
+            <div id="status-indicator" class="status-indicator stopped">
+                <div id="status-dot" class="status-indicator__dot"></div>
+                <span id="status-text">Detenido</span>
+            </div>
+
+            <!-- Temporizador -->
+            <div id="timer-display" class="timer-display">
+                <div id="timer-time" class="timer-display__time">00:00</div>
+                <div class="timer-display__label">Tiempo</div>
+            </div>
+
+            <!-- Contenido del Teleprompter -->
+            <div id="teleprompter-content" class="teleprompter-content">
+                <div id="scroll-text" class="scroll-text">
+                    <!-- El texto se cargará aquí dinámicamente -->
                 </div>
             </div>
 
-            <!-- Sección de configuración de fuente -->
-            <div class="control-section">
-                <h3>🎨 Configuración de Fuente</h3>
-                <div class="input-group">
-                    <label for="fontFamily">Tipo de letra:</label>
-                    <select id="fontFamily">
-                        <option value="Arial, sans-serif">Arial</option>
-                        <option value="Georgia, serif">Georgia</option>
-                        <option value="Times New Roman, serif">Times New Roman</option>
-                        <option value="Verdana, sans-serif">Verdana</option>
-                        <option value="Helvetica, sans-serif">Helvetica</option>
-                        <option value="Courier New, monospace">Courier New</option>
-                        <option value="Impact, sans-serif">Impact</option>
-                        <option value="Comic Sans MS, cursive">Comic Sans MS</option>
-                    </select>
+            <!-- Guía de Lectura -->
+            <div id="reading-guide" class="reading-guide center" style="display: none;"></div>
 
-                    <label for="fontSize">Tamaño:</label>
-                    <input type="range" id="fontSize" min="16" max="72" value="32" />
-                    <span class="range-value" id="fontSizeValue">32px</span>
-                </div>
+            <!-- Estadísticas -->
+            <div id="stats-overlay" class="stats-overlay">
+                <!-- Las estadísticas se cargarán aquí dinámicamente -->
             </div>
 
-            <!-- Sección de velocidad -->
-            <div class="control-section">
-                <h3>⚡ Control de Velocidad</h3>
-                <div class="input-group">
-                    <label for="speed">Velocidad:</label>
-                    <input type="range" id="speed" min="1" max="10" value="3" />
-                    <span class="range-value" id="speedValue">3</span>
-
-                    <label for="customSpeed">Personalizada:</label>
-                    <input type="number" id="customSpeed" min="0.1" max="20" step="0.1" value="3" />
-                </div>
-            </div>
-
-            <!-- Botones de control -->
-            <div class="buttons">
-                <button id="playBtn">▶️ Reproducir</button>
-                <button id="pauseBtn" disabled>⏸️ Pausar</button>
-                <button id="stopBtn" disabled>⏹️ Detener</button>
-                <button id="resetBtn">🔄 Reiniciar</button>
-                <button id="fullscreenBtn" class="fullscreen-btn">🖥️ Pantalla Completa</button>
+            <!-- Barra de Progreso -->
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progress-bar" style="width: 0%"></div>
             </div>
         </div>
 
-        <!-- Pantalla del teleprompter -->
-        <div class="teleprompter" id="teleprompter">
-            <div class="status" id="status">Detenido</div>
-            <div class="teleprompter-content" id="teleprompterContent">
-                <div class="scroll-text" id="scrollText">
-                    <p>¡Bienvenido al Teleprompter Profesional!</p>
-                    <p>Carga un archivo Word o escribe tu texto en el área de arriba.</p>
-                    <p>Ajusta el tamaño de fuente, tipo de letra y velocidad según tus necesidades.</p>
-                    <p>Presiona "Reproducir" para comenzar el desplazamiento automático.</p>
-                    <p>¡Perfecto para presentaciones, discursos y videos profesionales!</p>
-                </div>
+        <!-- Controles de Pantalla Completa -->
+        <div id="fullscreen-controls" class="fullscreen-controls">
+            <div class="fullscreen-control-panel">
+                <button id="fs-play-btn" class="fullscreen-btn" title="Reproducir" aria-label="Reproducir">
+                    ▶️
+                </button>
+                <button id="fs-pause-btn" class="fullscreen-btn" disabled title="Pausar" aria-label="Pausar">
+                    ⏸️
+                </button>
+                <button id="fs-stop-btn" class="fullscreen-btn" disabled title="Detener" aria-label="Detener">
+                    ⏹️
+                </button>
+                <button id="fs-reset-btn" class="fullscreen-btn" title="Reiniciar" aria-label="Reiniciar">
+                    🔄
+                </button>
             </div>
-            <div class="progress-bar" id="progressBar"></div>
+            <button id="fs-exit-btn" class="fullscreen-btn fullscreen-btn-exit" title="Salir de pantalla completa" aria-label="Salir de pantalla completa">
+                ✕
+            </button>
         </div>
-
-        <!-- Controles de pantalla completa -->
-        <div class="fullscreen-controls" id="fullscreenControls" style="display: none;">
-            <button id="fsPlayBtn" title="Reproducir">▶️</button>
-            <button id="fsPauseBtn" title="Pausar" disabled>⏸️</button>
-            <button id="fsStopBtn" title="Detener" disabled>⏹️</button>
-            <button id="fsResetBtn" title="Reiniciar">🔄</button>
-        </div>
-
-        <!-- Botón para salir de pantalla completa -->
-        <button class="exit-fullscreen-btn" id="exitFullscreenBtn" title="Salir de pantalla completa">✕</button>
     </div>
 
-    <script>
-        class Teleprompter {
-            constructor() {
-                this.isPlaying = false;
-                this.scrollPosition = 0;
-                this.animationId = null;
-                this.text = '';
-                this.speed = 3;
-                this.maxScroll = 0;
-                this.isFullscreen = false;
-                this.hideControlsTimeout = null;
-                
-                this.initializeElements();
-                this.bindEvents();
-                this.updateDisplay();
-            }
-
-            initializeElements() {
-                // Elementos de control
-                this.fileInput = document.getElementById('fileInput');
-                this.textInput = document.getElementById('textInput');
-                this.fontFamily = document.getElementById('fontFamily');
-                this.fontSize = document.getElementById('fontSize');
-                this.fontSizeValue = document.getElementById('fontSizeValue');
-                this.speedRange = document.getElementById('speed');
-                this.speedValue = document.getElementById('speedValue');
-                this.customSpeed = document.getElementById('customSpeed');
-                this.fileInfo = document.getElementById('fileInfo');
-
-                // Botones
-                this.playBtn = document.getElementById('playBtn');
-                this.pauseBtn = document.getElementById('pauseBtn');
-                this.stopBtn = document.getElementById('stopBtn');
-                this.resetBtn = document.getElementById('resetBtn');
-                this.fullscreenBtn = document.getElementById('fullscreenBtn');
-
-                // Elementos del teleprompter
-                this.teleprompter = document.getElementById('teleprompter');
-                this.scrollText = document.getElementById('scrollText');
-                this.status = document.getElementById('status');
-                this.progressBar = document.getElementById('progressBar');
-                this.teleprompterContent = document.getElementById('teleprompterContent');
-
-                // Elementos de pantalla completa
-                this.fullscreenControls = document.getElementById('fullscreenControls');
-                this.exitFullscreenBtn = document.getElementById('exitFullscreenBtn');
-                this.fsPlayBtn = document.getElementById('fsPlayBtn');
-                this.fsPauseBtn = document.getElementById('fsPauseBtn');
-                this.fsStopBtn = document.getElementById('fsStopBtn');
-                this.fsResetBtn = document.getElementById('fsResetBtn');
-            }
-
-            bindEvents() {
-                // Carga de archivo
-                this.fileInput.addEventListener('change', (e) => this.handleFileUpload(e));
-                
-                // Input de texto
-                this.textInput.addEventListener('input', (e) => this.updateText(e.target.value));
-                
-                // Controles de fuente
-                this.fontFamily.addEventListener('change', () => this.updateFontStyle());
-                this.fontSize.addEventListener('input', () => this.updateFontStyle());
-                
-                // Controles de velocidad
-                this.speedRange.addEventListener('input', (e) => this.updateSpeed(e.target.value));
-                this.customSpeed.addEventListener('input', (e) => this.updateSpeed(e.target.value));
-                
-                // Botones de control
-                this.playBtn.addEventListener('click', () => this.play());
-                this.pauseBtn.addEventListener('click', () => this.pause());
-                this.stopBtn.addEventListener('click', () => this.stop());
-                this.resetBtn.addEventListener('click', () => this.reset());
-                this.fullscreenBtn.addEventListener('click', () => this.enterFullscreen());
-
-                // Botones de pantalla completa
-                this.fsPlayBtn.addEventListener('click', () => this.play());
-                this.fsPauseBtn.addEventListener('click', () => this.pause());
-                this.fsStopBtn.addEventListener('click', () => this.stop());
-                this.fsResetBtn.addEventListener('click', () => this.reset());
-                this.exitFullscreenBtn.addEventListener('click', () => this.exitFullscreen());
-
-                // Control con teclado
-                document.addEventListener('keydown', (e) => this.handleKeyboard(e));
-
-                // Eventos de pantalla completa
-                document.addEventListener('fullscreenchange', () => this.handleFullscreenChange());
-                document.addEventListener('webkitfullscreenchange', () => this.handleFullscreenChange());
-                document.addEventListener('mozfullscreenchange', () => this.handleFullscreenChange());
-                document.addEventListener('MSFullscreenChange', () => this.handleFullscreenChange());
-
-                // Auto-ocultar controles en pantalla completa
-                this.teleprompter.addEventListener('mousemove', () => this.showFullscreenControls());
-                this.teleprompter.addEventListener('click', () => this.showFullscreenControls());
-            }
-
-            async handleFileUpload(event) {
-                const file = event.target.files[0];
-                if (!file) return;
-
-                this.fileInfo.style.display = 'block';
-                this.fileInfo.innerHTML = '📁 Cargando archivo...';
-
-                try {
-                    const arrayBuffer = await file.arrayBuffer();
-                    const result = await mammoth.extractRawText({ arrayBuffer });
-                    
-                    this.updateText(result.value);
-                    this.textInput.value = result.value;
-                    
-                    this.fileInfo.innerHTML = `✅ Archivo cargado: ${file.name} (${Math.round(file.size/1024)} KB)`;
-                    
-                    if (result.messages.length > 0) {
-                        console.log('Advertencias:', result.messages);
-                    }
-                } catch (error) {
-                    console.error('Error al cargar archivo:', error);
-                    this.fileInfo.innerHTML = '❌ Error al cargar el archivo. Asegúrate de que sea un documento Word válido.';
-                }
-            }
-
-            updateText(text) {
-                this.text = text;
-                this.scrollText.innerHTML = text.split('\n').map(line => 
-                    line.trim() ? `<p>${line}</p>` : '<br>'
-                ).join('');
-                this.calculateMaxScroll();
-                this.scrollPosition = 0;
-                this.updateScrollPosition();
-            }
-
-            updateFontStyle() {
-                const family = this.fontFamily.value;
-                const size = this.fontSize.value;
-                
-                this.scrollText.style.fontFamily = family;
-                this.scrollText.style.fontSize = size + 'px';
-                this.fontSizeValue.textContent = size + 'px';
-                
-                // Recalcular el scroll máximo cuando cambia el tamaño de fuente
-                setTimeout(() => this.calculateMaxScroll(), 100);
-            }
-
-            updateSpeed(value) {
-                this.speed = parseFloat(value);
-                this.speedRange.value = this.speed;
-                this.customSpeed.value = this.speed;
-                this.speedValue.textContent = this.speed.toString();
-            }
-
-            calculateMaxScroll() {
-                const contentHeight = this.scrollText.scrollHeight;
-                const containerHeight = this.teleprompterContent.clientHeight;
-                this.maxScroll = Math.max(0, contentHeight - containerHeight + 100);
-            }
-
-            play() {
-                if (!this.text.trim()) {
-                    alert('Por favor, carga un archivo o escribe texto antes de reproducir.');
-                    return;
-                }
-
-                this.isPlaying = true;
-                this.updateButtonStates();
-                this.status.textContent = 'Reproduciendo';
-                this.animate();
-            }
-
-            pause() {
-                this.isPlaying = false;
-                this.updateButtonStates();
-                this.status.textContent = 'Pausado';
-                if (this.animationId) {
-                    cancelAnimationFrame(this.animationId);
-                }
-            }
-
-            stop() {
-                this.isPlaying = false;
-                this.scrollPosition = 0;
-                this.updateButtonStates();
-                this.status.textContent = 'Detenido';
-                this.updateScrollPosition();
-                if (this.animationId) {
-                    cancelAnimationFrame(this.animationId);
-                }
-            }
-
-            reset() {
-                this.stop();
-                this.textInput.value = '';
-                this.fileInput.value = '';
-                this.fileInfo.style.display = 'none';
-                this.updateText('¡Bienvenido al Teleprompter Profesional!\n\nCarga un archivo Word o escribe tu texto en el área de arriba.\n\nAjusta el tamaño de fuente, tipo de letra y velocidad según tus necesidades.\n\nPresiona "Reproducir" para comenzar el desplazamiento automático.\n\n¡Perfecto para presentaciones, discursos y videos profesionales!');
-            }
-
-            animate() {
-                if (!this.isPlaying) return;
-
-                this.scrollPosition += this.speed * 0.5;
-                
-                if (this.scrollPosition >= this.maxScroll) {
-                    this.stop();
-                    return;
-                }
-
-                this.updateScrollPosition();
-                this.animationId = requestAnimationFrame(() => this.animate());
-            }
-
-            updateScrollPosition() {
-                this.scrollText.style.transform = `translateY(-${this.scrollPosition}px)`;
-                
-                // Actualizar barra de progreso
-                const progress = this.maxScroll > 0 ? (this.scrollPosition / this.maxScroll) * 100 : 0;
-                this.progressBar.style.width = Math.min(100, Math.max(0, progress)) + '%';
-            }
-
-            updateButtonStates() {
-                // Botones principales
-                this.playBtn.disabled = this.isPlaying;
-                this.pauseBtn.disabled = !this.isPlaying;
-                this.stopBtn.disabled = !this.isPlaying;
-
-                // Botones de pantalla completa
-                this.fsPlayBtn.disabled = this.isPlaying;
-                this.fsPauseBtn.disabled = !this.isPlaying;
-                this.fsStopBtn.disabled = !this.isPlaying;
-            }
-
-            updateDisplay() {
-                this.updateFontStyle();
-                this.updateSpeed(this.speed);
-                this.updateButtonStates();
-            }
-
-            handleKeyboard(event) {
-                // Solo procesar si no estamos escribiendo en un campo de texto
-                if (event.target.tagName === 'TEXTAREA' || event.target.tagName === 'INPUT') {
-                    return;
-                }
-
-                switch(event.code) {
-                    case 'Space':
-                        event.preventDefault();
-                        if (this.isPlaying) {
-                            this.pause();
-                        } else {
-                            this.play();
-                        }
-                        break;
-                    case 'Escape':
-                        if (this.isFullscreen) {
-                            this.exitFullscreen();
-                        } else {
-                            this.stop();
-                        }
-                        break;
-                    case 'KeyF':
-                        if (event.ctrlKey || event.metaKey) {
-                            event.preventDefault();
-                            if (this.isFullscreen) {
-                                this.exitFullscreen();
-                            } else {
-                                this.enterFullscreen();
-                            }
-                        }
-                        break;
-                    case 'ArrowUp':
-                        event.preventDefault();
-                        this.updateSpeed(Math.min(20, this.speed + 0.5));
-                        break;
-                    case 'ArrowDown':
-                        event.preventDefault();
-                        this.updateSpeed(Math.max(0.1, this.speed - 0.5));
-                        break;
-                }
-            }
-
-            // Funciones de pantalla completa
-            enterFullscreen() {
-                const element = this.teleprompter;
-                
-                if (element.requestFullscreen) {
-                    element.requestFullscreen();
-                } else if (element.webkitRequestFullscreen) {
-                    element.webkitRequestFullscreen();
-                } else if (element.mozRequestFullScreen) {
-                    element.mozRequestFullScreen();
-                } else if (element.msRequestFullscreen) {
-                    element.msRequestFullscreen();
-                }
-            }
-
-            exitFullscreen() {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.webkitExitFullscreen) {
-                    document.webkitExitFullscreen();
-                } else if (document.mozCancelFullScreen) {
-                    document.mozCancelFullScreen();
-                } else if (document.msExitFullscreen) {
-                    document.msExitFullscreen();
-                }
-            }
-
-            handleFullscreenChange() {
-                this.isFullscreen = !!(document.fullscreenElement || 
-                                     document.webkitFullscreenElement || 
-                                     document.mozFullScreenElement || 
-                                     document.msFullscreenElement);
-
-                console.log('Fullscreen changed:', this.isFullscreen);
-
-                if (this.isFullscreen) {
-                    // Entrar en pantalla completa
-                    this.teleprompter.classList.add('fullscreen-teleprompter');
-                    this.fullscreenBtn.textContent = '📱 Salir Pantalla Completa';
-                    
-                    // Forzar que los controles sean visibles
-                    this.fullscreenControls.style.display = 'flex';
-                    this.fullscreenControls.style.visibility = 'visible';
-                    this.fullscreenControls.style.opacity = '1';
-                    this.fullscreenControls.style.zIndex = '99999';
-                    
-                    this.exitFullscreenBtn.style.display = 'block';
-                    this.exitFullscreenBtn.style.visibility = 'visible';
-                    this.exitFullscreenBtn.style.opacity = '1';
-                    this.exitFullscreenBtn.style.zIndex = '99999';
-                    
-                    console.log('Controls forced visible');
-                    
-                } else {
-                    // Salir de pantalla completa
-                    this.teleprompter.classList.remove('fullscreen-teleprompter', 'fullscreen-auto-hide');
-                    this.fullscreenControls.style.display = 'none';
-                    this.exitFullscreenBtn.style.display = 'none';
-                    this.fullscreenBtn.textContent = '🖥️ Pantalla Completa';
-                    
-                    if (this.hideControlsTimeout) {
-                        clearTimeout(this.hideControlsTimeout);
-                    }
-                }
-            }
-
-            showFullscreenControls() {
-                if (!this.isFullscreen) return;
-
-                this.teleprompter.classList.remove('fullscreen-auto-hide');
-                
-                // Reiniciar timer para ocultar controles
-                this.startHideControlsTimer();
-            }
-
-            startHideControlsTimer() {
-                if (this.hideControlsTimeout) {
-                    clearTimeout(this.hideControlsTimeout);
-                }
-
-                this.hideControlsTimeout = setTimeout(() => {
-                    if (this.isFullscreen) {
-                        this.teleprompter.classList.add('fullscreen-auto-hide');
-                    }
-                }, 5000); // Ocultar después de 5 segundos (más tiempo)
-            }
-        }
-
-        // Inicializar la aplicación cuando la página cargue
-        document.addEventListener('DOMContentLoaded', () => {
-            new Teleprompter();
-        });
-    </script>
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/storage-manager.js"></script>
+    <script src="js/text-analyzer.js"></script>
+    <script src="js/keyboard-handler.js"></script>
+    <script src="js/teleprompter-core.js"></script>
+    <script src="js/ui-controller.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
