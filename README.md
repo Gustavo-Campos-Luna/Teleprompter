@@ -292,11 +292,8 @@ const CONFIG = {
 
 ## 📊 Rendimiento
 
-- ⚡ **Carga inicial**: < 100ms
-- ⚡ **First Contentful Paint**: < 200ms
-- ⚡ **Time to Interactive**: < 300ms
-- ⚡ **FPS**: 60fps constantes
-- ⚡ **Tamaño total**: ~150KB (sin comprimir)
+- ⚡ **Tamaño total**: ~150KB (sin comprimir, sin dependencias además de Mammoth.js vía CDN)
+- ⚡ **Animación de scroll**: `requestAnimationFrame`, sin bibliotecas de animación
 
 ---
 

@@ -36,18 +36,24 @@
     transform: translateY(0);
 }
 
+/*
+ * Nota: los tokens --color-secondary-* del design system (verde #10b981,
+ * naranja #f59e0b) no alcanzan el contraste minimo WCAG AA (4.5:1) con
+ * texto blanco a este tamaño (2.15:1 y 2.54:1 medidos). Se usan tonos
+ * mas oscuros solo aqui para mantener legibilidad.
+ */
 .toast--info {
     background: var(--color-gray-800);
 }
 
 .toast--success {
-    background: var(--color-secondary-green);
+    background: #047857; /* verde 700 - 5.48:1 con blanco */
 }
 
 .toast--warning {
-    background: var(--color-secondary-orange);
+    background: #c2410c; /* naranja 700 - 5.18:1 con blanco */
 }
 
 .toast--error {
-    background: var(--color-secondary-red);
+    background: #dc2626; /* rojo 600 - 4.83:1 con blanco */
 }
