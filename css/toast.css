@@ -1,0 +1,59 @@
+/**
+ * Toast Notifications - Professional Teleprompter
+ * Notificaciones temporales no intrusivas
+ */
+
+.toast-container {
+    position: fixed;
+    bottom: var(--spacing-lg);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    z-index: var(--z-index-tooltip);
+    pointer-events: none;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--border-radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-white);
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.toast--visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/*
+ * Nota: los tokens --color-secondary-* del design system (verde #10b981,
+ * naranja #f59e0b) no alcanzan el contraste minimo WCAG AA (4.5:1) con
+ * texto blanco a este tamaño (2.15:1 y 2.54:1 medidos). Se usan tonos
+ * mas oscuros solo aqui para mantener legibilidad.
+ */
+.toast--info {
+    background: var(--color-gray-800);
+}
+
+.toast--success {
+    background: #047857; /* verde 700 - 5.48:1 con blanco */
+}
+
+.toast--warning {
+    background: #c2410c; /* naranja 700 - 5.18:1 con blanco */
+}
+
+.toast--error {
+    background: #dc2626; /* rojo 600 - 4.83:1 con blanco */
+}

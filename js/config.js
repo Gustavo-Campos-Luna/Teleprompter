@@ -35,7 +35,8 @@ const CONFIG = {
         SHOW_PROGRESS: true,
         READING_GUIDE: 'center',
         AUTO_HIDE_CONTROLS: true,
-        AUTO_HIDE_DELAY: 5000
+        AUTO_HIDE_DELAY: 5000,
+        NOTIFICATION_DURATION: 3000
     },
 
     // Fuentes disponibles

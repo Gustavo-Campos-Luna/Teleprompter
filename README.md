@@ -1,6 +1,6 @@
 # 📺 Teleprompter Profesional 2.0
 
-[![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://github.com/Gustavo-Campos-Luna/teleprompter)
+[![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://github.com/Gustavo-Campos-Luna/Teleprompter)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/status-production-brightgreen.svg)]()
 
@@ -8,7 +8,7 @@
 
 ## 🚀 Demo en Vivo
 
-**[Ver Demo](https://gustavo-campos-luna.github.io/teleprompter)**
+**[Ver Demo](https://gustavo-campos-luna.github.io/Teleprompter)**
 
 ---
 
@@ -234,7 +234,7 @@ teleprompter/
 ### Opción 1: Uso Directo
 ```bash
 # Clonar repositorio
-git clone https://github.com/Gustavo-Campos-Luna/teleprompter.git
+git clone https://github.com/Gustavo-Campos-Luna/Teleprompter.git
 
 # Abrir en navegador
 cd teleprompter
@@ -292,11 +292,8 @@ const CONFIG = {
 
 ## 📊 Rendimiento
 
-- ⚡ **Carga inicial**: < 100ms
-- ⚡ **First Contentful Paint**: < 200ms
-- ⚡ **Time to Interactive**: < 300ms
-- ⚡ **FPS**: 60fps constantes
-- ⚡ **Tamaño total**: ~150KB (sin comprimir)
+- ⚡ **Tamaño total**: ~150KB (sin comprimir, sin dependencias además de Mammoth.js vía CDN)
+- ⚡ **Animación de scroll**: `requestAnimationFrame`, sin bibliotecas de animación
 
 ---
 
@@ -323,7 +320,7 @@ Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) par
 **Gustavo Campos Luna**
 
 - GitHub: [@Gustavo-Campos-Luna](https://github.com/Gustavo-Campos-Luna)
-- Proyecto: [Teleprompter Profesional](https://github.com/Gustavo-Campos-Luna/teleprompter)
+- Proyecto: [Teleprompter Profesional](https://github.com/Gustavo-Campos-Luna/Teleprompter)
 
 ---
 
@@ -362,7 +359,7 @@ Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) par
 
 ## 🐛 Reportar Bugs
 
-Si encuentras un bug, por favor [abre un issue](https://github.com/Gustavo-Campos-Luna/teleprompter/issues) con:
+Si encuentras un bug, por favor [abre un issue](https://github.com/Gustavo-Campos-Luna/Teleprompter/issues) con:
 - Descripción del problema
 - Pasos para reproducir
 - Navegador y versión
@@ -389,6 +386,6 @@ Si encuentras un bug, por favor [abre un issue](https://github.com/Gustavo-Campo
 
 ⭐ Si te gusta este proyecto, dale una estrella en GitHub ⭐
 
-[Demo](https://gustavo-campos-luna.github.io/teleprompter) • [Reportar Bug](https://github.com/Gustavo-Campos-Luna/teleprompter/issues) • [Solicitar Feature](https://github.com/Gustavo-Campos-Luna/teleprompter/issues)
+[Demo](https://gustavo-campos-luna.github.io/Teleprompter) • [Reportar Bug](https://github.com/Gustavo-Campos-Luna/Teleprompter/issues) • [Solicitar Feature](https://github.com/Gustavo-Campos-Luna/Teleprompter/issues)
 
 </div>
