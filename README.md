@@ -1,4 +1,4 @@
-# 📺 Teleprompter Profesional 2.0
+# Teleprompter Profesional 2.0
 
 [![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://github.com/Gustavo-Campos-Luna/Teleprompter)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
@@ -6,41 +6,40 @@
 
 > Teleprompter profesional de última generación con características avanzadas para presentaciones, producción de video y streaming.
 
-## 🚀 Demo en Vivo
+## Demo en Vivo
 
 **[Ver Demo](https://gustavo-campos-luna.github.io/Teleprompter)**
 
 ---
 
-## ✨ Características Principales
+## Características Principales
 
-### 🎬 Reproducción Profesional
+### Reproducción Profesional
 - **Control de velocidad avanzado**: 0.1x a 20x con ajuste en tiempo real
 - **Scroll suave y fluido**: Animaciones optimizadas con requestAnimationFrame
 - **Temporizador integrado**: Cronómetro con precisión de décimas de segundo
 - **Barra de progreso visual**: Seguimiento preciso del avance
 - **Controles en pantalla completa**: Botones flotantes con auto-ocultamiento
 
-### 🔄 Modo Espejo Profesional
+### Modo Espejo Profesional
 - **Reflejo horizontal**: Perfecto para telepromters con espejos
 - **Compatible con cámaras**: Ideal para producciones profesionales de video
 - **Toggle rápido**: Activa/desactiva con Ctrl+M
 
-### 🎨 Personalización Avanzada
-- **9 temas visuales**: Desde minimalista hasta neón y retrowave
+### Personalización
 - **14 fuentes profesionales**: Arial, Georgia, Times New Roman y más
-- **Colores personalizables**: 5 colores de texto y 5 de fondo
+- **Colores personalizables**: 5 colores de texto y 5 de fondo para el área de lectura
 - **Tamaño de fuente**: 16px a 120px con ajuste en tiempo real
 - **Sistema de diseño**: Variables CSS para consistencia visual
 
-### 📊 Análisis de Texto Inteligente
+### Análisis de Texto Inteligente
 - **Conteo de palabras y caracteres**: Estadísticas en tiempo real
 - **Tiempo estimado de lectura**: Basado en 150 palabras por minuto
 - **Tiempo de habla estimado**: Basado en 130 palabras por minuto
 - **Análisis de complejidad**: Evaluación del nivel del texto
 - **Estadísticas avanzadas**: Oraciones, párrafos, líneas
 
-### ⌨️ Atajos de Teclado Profesionales
+### Atajos de Teclado Profesionales
 - **Reproducción**: Espacio (play/pause), Esc (stop)
 - **Velocidad**: ↑/↓ para ajustar
 - **Pantalla completa**: Ctrl+F
@@ -49,28 +48,27 @@
 - **Ayuda**: H para ver todos los atajos
 - Y muchos más...
 
-### 💾 Persistencia de Datos
+### Persistencia de Datos
 - **localStorage**: Guarda automáticamente preferencias
 - **Importar/Exportar**: Respaldo de configuración en JSON
 - **Historial de textos**: Últimos 10 textos utilizados
-- **Temas persistentes**: Recuerda tu tema favorito
 
-### 📱 Diseño Responsivo
+### Diseño Responsivo
 - **Compatible con todos los dispositivos**: Desktop, tablet, móvil
 - **Optimizado para touch**: Controles táctiles mejorados
 - **Orientación adaptable**: Portrait y landscape
 - **Breakpoints modernos**: Diseño fluido y profesional
 
-### 🔧 Características Técnicas
+### Características Técnicas
 - **Arquitectura modular**: JavaScript ES6+ con clases
 - **Sin frameworks**: Vanilla JS para máximo rendimiento
-- **Accesibilidad**: Atributos ARIA y navegación por teclado
+- **Accesibilidad**: Atributos ARIA, navegación por teclado, `:focus-visible` y soporte de `prefers-reduced-motion`
 - **SEO optimizado**: Meta tags completos
 - **Performance**: Lazy loading y optimizaciones
 
 ---
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 teleprompter/
@@ -82,7 +80,7 @@ teleprompter/
 │   ├── main-styles.css         # Estilos principales
 │   ├── teleprompter-styles.css # Estilos del teleprompter
 │   ├── animations.css          # Animaciones y transiciones
-│   ├── themes.css              # Temas múltiples
+│   ├── toast.css                # Notificaciones temporales
 │   ├── responsive.css          # Diseño responsivo
 │   └── keyboard-help.css       # Overlay de ayuda
 │
@@ -102,7 +100,7 @@ teleprompter/
 
 ---
 
-## 🎮 Guía de Uso
+## Guía de Uso
 
 ### Inicio Rápido
 
@@ -111,8 +109,7 @@ teleprompter/
    - O escribe/pega tu texto directamente
 
 2. **Personalizar**
-   - Ajusta fuente, tamaño y colores
-   - Selecciona tu tema favorito
+   - Ajusta fuente, tamaño y colores de lectura
    - Configura velocidad de scroll
 
 3. **Reproducir**
@@ -147,7 +144,7 @@ teleprompter/
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 ### Frontend
 - **HTML5**: Estructura semántica y accesible
@@ -166,62 +163,48 @@ teleprompter/
 
 ---
 
-## 🎨 Temas Disponibles
-
-1. **Por Defecto** 🎨 - Gradiente violeta profesional
-2. **Oscuro** 🌙 - Para ambientes con poca luz
-3. **Alto Contraste** ◐ - Máxima legibilidad
-4. **Océano** 🌊 - Tonos azules tranquilos
-5. **Bosque** 🌲 - Verdes naturales
-6. **Atardecer** 🌅 - Naranjas y rojos cálidos
-7. **Neón** 💜 - Cyberpunk brillante
-8. **Minimalista** ⚪ - Limpio y simple
-9. **Retrowave** 🌃 - Estética años 80
-
----
-
-## 📱 Compatibilidad
+## Compatibilidad
 
 ### Navegadores Soportados
-- ✅ Chrome/Edge 80+
-- ✅ Firefox 75+
-- ✅ Safari 13+
-- ✅ Opera 70+
+- Chrome/Edge 80+
+- Firefox 75+
+- Safari 13+
+- Opera 70+
 
 ### Dispositivos
-- ✅ Desktop (Windows, macOS, Linux)
-- ✅ Tablets (iPad, Android)
-- ✅ Smartphones (iOS, Android)
+- Desktop (Windows, macOS, Linux)
+- Tablets (iPad, Android)
+- Smartphones (iOS, Android)
 
 ### Resoluciones
-- ✅ 4K (3840×2160)
-- ✅ Full HD (1920×1080)
-- ✅ HD (1280×720)
-- ✅ Mobile (320px+)
+- 4K (3840×2160)
+- Full HD (1920×1080)
+- HD (1280×720)
+- Mobile (320px+)
 
 ---
 
-## 📖 Casos de Uso
+## Casos de Uso
 
-### 🎬 Producción de Video
+### Producción de Video
 - Grabación de videos para YouTube
 - Producción de contenido profesional
 - Vlogs y tutoriales
 - Entrevistas y presentaciones
 
-### 🎤 Presentaciones en Vivo
+### Presentaciones en Vivo
 - Conferencias y charlas
 - Discursos públicos
 - Webinars y seminarios
 - Clases y tutoriales
 
-### 📺 Streaming
+### Streaming
 - Twitch y YouTube Live
 - Transmisiones en vivo
 - Podcasts en video
 - Contenido educativo
 
-### 🎭 Entretenimiento
+### Entretenimiento
 - Teatro y actuación
 - Doblaje y locución
 - Ensayos de guiones
@@ -229,7 +212,7 @@ teleprompter/
 
 ---
 
-## 🚀 Instalación Local
+## Instalación Local
 
 ### Opción 1: Uso Directo
 ```bash
@@ -260,7 +243,7 @@ http://localhost:8000
 
 ---
 
-## 🔧 Configuración Avanzada
+## Configuración Avanzada
 
 ### Personalizar CONFIG.js
 
@@ -269,7 +252,6 @@ const CONFIG = {
     DEFAULTS: {
         SPEED: 3,              // Velocidad inicial
         FONT_SIZE: 32,         // Tamaño de fuente inicial
-        THEME: 'default',      // Tema por defecto
         MIRROR_MODE: false,    // Modo espejo desactivado
         SHOW_TIMER: true,      // Mostrar temporizador
         SHOW_STATS: true       // Mostrar estadísticas
@@ -277,27 +259,16 @@ const CONFIG = {
 }
 ```
 
-### Agregar Nuevos Temas
+---
 
-```css
-/* themes.css */
-[data-theme="mi-tema"] {
-    --color-primary-start: #your-color;
-    --color-primary-end: #your-color;
-    /* ... más configuraciones */
-}
-```
+## Rendimiento
+
+- **Tamaño total**: ~150KB (sin comprimir, sin dependencias además de Mammoth.js vía CDN)
+- **Animación de scroll**: `requestAnimationFrame`, sin bibliotecas de animación
 
 ---
 
-## 📊 Rendimiento
-
-- ⚡ **Tamaño total**: ~150KB (sin comprimir, sin dependencias además de Mammoth.js vía CDN)
-- ⚡ **Animación de scroll**: `requestAnimationFrame`, sin bibliotecas de animación
-
----
-
-## 🤝 Contribuir
+## Contribuir
 
 Las contribuciones son bienvenidas. Por favor:
 
@@ -309,13 +280,13 @@ Las contribuciones son bienvenidas. Por favor:
 
 ---
 
-## 📄 Licencia
+## Licencia
 
 Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para detalles.
 
 ---
 
-## 👨‍💻 Autor
+## Autor
 
 **Gustavo Campos Luna**
 
@@ -324,7 +295,7 @@ Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) par
 
 ---
 
-## 🙏 Agradecimientos
+## Agradecimientos
 
 - Comunidad de desarrolladores open source
 - [Mammoth.js](https://github.com/mwilliamson/mammoth.js) por el procesamiento de Word
@@ -332,32 +303,40 @@ Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) par
 
 ---
 
-## 📝 Changelog
+## Changelog
+
+### Sin publicar — Rediseño visual
+- Identidad visual completa: interfaz oscura de una sola paleta ("sala de control de transmisión"), acento naranja único, tipografía Space Grotesk/Inter/JetBrains Mono
+- Eliminado el selector de 9 temas de color de la interfaz (`css/themes.css`, `data-theme`); el área de lectura conserva sus propios selectores de color de texto/fondo, independientes del tema de la app
+- Reemplazados todos los íconos de emoji por un sistema de íconos SVG en línea
+- Botones unificados: una sola acción primaria por pantalla en vez de colores sin relación entre sí
+- Accesibilidad: `:focus-visible` visible en todos los controles, soporte de `prefers-reduced-motion`
+- Corregido contraste WCAG AA en las notificaciones toast
 
 ### Version 2.0.0 (2026-01)
-- ✨ Rediseño completo de UI/UX
-- ✨ Arquitectura modular profesional
-- ✨ 9 temas visuales
-- ✨ Sistema de diseño con variables CSS
-- ✨ Modo espejo profesional
-- ✨ Análisis de texto inteligente
-- ✨ Atajos de teclado avanzados
-- ✨ Persistencia con localStorage
-- ✨ Exportar/importar configuración
-- ✨ Diseño responsivo mejorado
-- ✨ Accesibilidad WCAG 2.1
-- ✨ Performance optimizado
+- Rediseño completo de UI/UX
+- Arquitectura modular profesional
+- Sistema de 9 temas visuales (retirado en el rediseño posterior, ver arriba)
+- Sistema de diseño con variables CSS
+- Modo espejo profesional
+- Análisis de texto inteligente
+- Atajos de teclado avanzados
+- Persistencia con localStorage
+- Exportar/importar configuración
+- Diseño responsivo mejorado
+- Accesibilidad WCAG 2.1
+- Performance optimizado
 
 ### Version 1.0.0 (2025)
-- 🎉 Lanzamiento inicial
-- ✅ Funcionalidad básica
-- ✅ Carga de archivos Word
-- ✅ Control de velocidad
-- ✅ Pantalla completa
+- Lanzamiento inicial
+- Funcionalidad básica
+- Carga de archivos Word
+- Control de velocidad
+- Pantalla completa
 
 ---
 
-## 🐛 Reportar Bugs
+## Reportar Bugs
 
 Si encuentras un bug, por favor [abre un issue](https://github.com/Gustavo-Campos-Luna/Teleprompter/issues) con:
 - Descripción del problema
@@ -367,7 +346,7 @@ Si encuentras un bug, por favor [abre un issue](https://github.com/Gustavo-Campo
 
 ---
 
-## 💡 Roadmap Futuro
+## Roadmap Futuro
 
 - [ ] Control remoto desde smartphone
 - [ ] Sincronización multi-dispositivo
@@ -382,9 +361,7 @@ Si encuentras un bug, por favor [abre un issue](https://github.com/Gustavo-Campo
 
 <div align="center">
 
-**Hecho con ❤️ y ☕ por Gustavo Campos Luna**
-
-⭐ Si te gusta este proyecto, dale una estrella en GitHub ⭐
+**Hecho por Gustavo Campos Luna**
 
 [Demo](https://gustavo-campos-luna.github.io/Teleprompter) • [Reportar Bug](https://github.com/Gustavo-Campos-Luna/Teleprompter/issues) • [Solicitar Feature](https://github.com/Gustavo-Campos-Luna/Teleprompter/issues)
 
