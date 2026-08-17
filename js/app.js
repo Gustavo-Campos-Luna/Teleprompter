@@ -17,12 +17,6 @@ function initializeApp() {
     console.log(`Desarrollado por ${CONFIG.APP.AUTHOR}`);
 
     try {
-        // Cargar tema guardado
-        const savedTheme = storageManager.loadTheme();
-        if (savedTheme) {
-            document.documentElement.setAttribute('data-theme', savedTheme);
-        }
-
         // Inicializar teleprompter
         teleprompter = new TeleprompterCore();
         console.log('✓ Teleprompter Core inicializado');
@@ -70,7 +64,7 @@ function showError(message) {
     errorDiv.className = 'error-message';
     errorDiv.innerHTML = `
         <div class="error-content">
-            <h2>❌ Error</h2>
+            <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Error</h2>
             <p>${message}</p>
             <button onclick="location.reload()">Recargar Página</button>
         </div>

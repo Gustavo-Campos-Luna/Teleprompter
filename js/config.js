@@ -27,7 +27,6 @@ const CONFIG = {
         SPEED_KEYBOARD_INCREMENT: 0.5,
         TEXT_COLOR: 'white',
         BG_COLOR: 'black',
-        THEME: 'default',
         LINE_HEIGHT: 1.8,
         MIRROR_MODE: false,
         SHOW_TIMER: true,
@@ -55,19 +54,6 @@ const CONFIG = {
         { value: 'Garamond, serif', label: 'Garamond' },
         { value: 'Bookman, serif', label: 'Bookman' },
         { value: 'Lucida Console, monospace', label: 'Lucida Console' }
-    ],
-
-    // Temas disponibles
-    THEMES: [
-        { value: 'default', label: 'Por Defecto', icon: '🎨' },
-        { value: 'dark', label: 'Oscuro', icon: '🌙' },
-        { value: 'high-contrast', label: 'Alto Contraste', icon: '◐' },
-        { value: 'ocean', label: 'Océano', icon: '🌊' },
-        { value: 'forest', label: 'Bosque', icon: '🌲' },
-        { value: 'sunset', label: 'Atardecer', icon: '🌅' },
-        { value: 'neon', label: 'Neón', icon: '💜' },
-        { value: 'minimal', label: 'Minimalista', icon: '⚪' },
-        { value: 'retrowave', label: 'Retrowave', icon: '🌃' }
     ],
 
     // Colores de texto
@@ -129,8 +115,7 @@ const CONFIG = {
             SETTINGS: 'settings',
             RECENT_TEXTS: 'recent_texts',
             MARKERS: 'markers',
-            NOTES: 'notes',
-            THEME: 'theme'
+            NOTES: 'notes'
         },
         MAX_RECENT_TEXTS: 10
     },
@@ -183,7 +168,6 @@ Características destacadas:
 • Temporizador y cronómetro integrado
 • Marcadores y puntos de navegación
 • Análisis de texto en tiempo real
-• Múltiples temas personalizables
 • Atajos de teclado profesionales
 • Sistema de notas del presentador
 • Guías de lectura ajustables
