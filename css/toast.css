@@ -21,13 +21,14 @@
     align-items: center;
     gap: var(--spacing-sm);
     padding: var(--spacing-sm) var(--spacing-lg);
-    border-radius: var(--border-radius-full);
+    border-radius: var(--border-radius-md);
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
-    color: var(--color-white);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
     box-shadow: var(--shadow-lg);
     opacity: 0;
-    transform: translateY(1rem);
+    transform: translateY(0.5rem);
     transition: opacity var(--transition-base), transform var(--transition-base);
 }
 
@@ -36,24 +37,27 @@
     transform: translateY(0);
 }
 
-/*
- * Nota: los tokens --color-secondary-* del design system (verde #10b981,
- * naranja #f59e0b) no alcanzan el contraste minimo WCAG AA (4.5:1) con
- * texto blanco a este tamaño (2.15:1 y 2.54:1 medidos). Se usan tonos
- * mas oscuros solo aqui para mantener legibilidad.
- */
 .toast--info {
-    background: var(--color-gray-800);
+    background: var(--panel-raised);
 }
 
+/*
+ * Nota: los tokens de señal (--signal-green/amber/red) no alcanzan por si
+ * solos el contraste minimo WCAG AA (4.5:1) con texto claro a este tamaño.
+ * Se usa el color de señal como borde/acento y un fondo de panel oscuro
+ * como base, en vez de rellenar todo el toast con el color saturado.
+ */
 .toast--success {
-    background: #047857; /* verde 700 - 5.48:1 con blanco */
+    background: var(--panel-raised);
+    border-color: var(--signal-green);
 }
 
 .toast--warning {
-    background: #c2410c; /* naranja 700 - 5.18:1 con blanco */
+    background: var(--panel-raised);
+    border-color: var(--signal-amber);
 }
 
 .toast--error {
-    background: #dc2626; /* rojo 600 - 4.83:1 con blanco */
+    background: var(--panel-raised);
+    border-color: var(--signal-red);
 }

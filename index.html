@@ -6,7 +6,7 @@
     <meta name="description" content="Teleprompter profesional con características avanzadas: modo espejo, temporizador, marcadores, múltiples temas y más.">
     <meta name="keywords" content="teleprompter, prompter, presentaciones, videos, producción, profesional">
     <meta name="author" content="Gustavo Campos Luna">
-    <meta name="theme-color" content="#667eea">
+    <meta name="theme-color" content="#0F1115">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -22,13 +22,15 @@
 
     <!-- Preconnect para optimización -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <!-- Estilos -->
     <link rel="stylesheet" href="css/design-system.css">
     <link rel="stylesheet" href="css/main-styles.css">
     <link rel="stylesheet" href="css/teleprompter-styles.css">
     <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/themes.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/keyboard-help.css">
     <link rel="stylesheet" href="css/toast.css">
@@ -41,11 +43,13 @@
     <div class="app-container">
         <!-- Header -->
         <header class="app-header">
-            <h1 class="app-header__title">
-                <span class="gradient-text">📺 Teleprompter Profesional</span>
-            </h1>
+            <div class="app-header__brand">
+                <span class="app-header__dot" aria-hidden="true"></span>
+                <span class="app-header__eyebrow">Teleprompter</span>
+            </div>
+            <h1 class="app-header__title">Consola de presentación</h1>
             <p class="app-header__subtitle">
-                Presentaciones profesionales con tecnología avanzada
+                Control de texto, velocidad y visualización para grabación en vivo
             </p>
         </header>
 
@@ -54,19 +58,19 @@
             <!-- Navegación por Tabs -->
             <nav class="tabs-nav" role="tablist">
                 <button class="tab-button active" data-tab="content" role="tab" aria-selected="true">
-                    <span class="tab-icon">📄</span>
+                    <span class="tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
                     Contenido
                 </button>
                 <button class="tab-button" data-tab="appearance" role="tab" aria-selected="false">
-                    <span class="tab-icon">🎨</span>
+                    <span class="tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></span>
                     Apariencia
                 </button>
                 <button class="tab-button" data-tab="playback" role="tab" aria-selected="false">
-                    <span class="tab-icon">⚡</span>
+                    <span class="tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
                     Reproducción
                 </button>
                 <button class="tab-button" data-tab="advanced" role="tab" aria-selected="false">
-                    <span class="tab-icon">⚙️</span>
+                    <span class="tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
                     Avanzado
                 </button>
             </nav>
@@ -75,7 +79,7 @@
             <div id="content-tab" class="tab-content active" role="tabpanel">
                 <div class="control-section">
                     <h3 class="control-section__title">
-                        <span class="control-section__icon">📄</span>
+                        <span class="control-section__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
                         Cargar Contenido
                     </h3>
                     <div class="input-group">
@@ -105,7 +109,7 @@ Tips:
             <div id="appearance-tab" class="tab-content" role="tabpanel">
                 <div class="control-section">
                     <h3 class="control-section__title">
-                        <span class="control-section__icon">🎨</span>
+                        <span class="control-section__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg></span>
                         Fuente y Estilo
                     </h3>
 
@@ -125,8 +129,8 @@ Tips:
 
                 <div class="control-section">
                     <h3 class="control-section__title">
-                        <span class="control-section__icon">🎨</span>
-                        Colores
+                        <span class="control-section__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></span>
+                        Colores del prompter
                     </h3>
 
                     <div class="grid-2col">
@@ -140,11 +144,6 @@ Tips:
                             <select id="bg-color" class="select" aria-label="Seleccionar color de fondo"></select>
                         </div>
                     </div>
-
-                    <div class="input-group">
-                        <label class="input-label" for="theme">Tema</label>
-                        <select id="theme" class="select" aria-label="Seleccionar tema visual"></select>
-                    </div>
                 </div>
             </div>
 
@@ -152,7 +151,7 @@ Tips:
             <div id="playback-tab" class="tab-content" role="tabpanel">
                 <div class="control-section">
                     <h3 class="control-section__title">
-                        <span class="control-section__icon">⚡</span>
+                        <span class="control-section__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/><path d="M12 12l4-2.5"/><path d="M12 8v.01"/></svg></span>
                         Control de Velocidad
                     </h3>
 
@@ -170,7 +169,7 @@ Tips:
 
                 <div class="control-section">
                     <h3 class="control-section__title">
-                        <span class="control-section__icon">📐</span>
+                        <span class="control-section__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></span>
                         Opciones de Visualización
                     </h3>
 
@@ -180,19 +179,19 @@ Tips:
                     </div>
 
                     <div class="input-group" style="flex-direction: column; align-items: flex-start;">
-                        <label style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                        <label class="checkbox-label">
                             <input type="checkbox" id="mirror-mode" aria-label="Activar modo espejo">
-                            <span>🔄 Modo Espejo (para cámaras)</span>
+                            <span>Modo espejo (para cámaras)</span>
                         </label>
 
-                        <label style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                        <label class="checkbox-label">
                             <input type="checkbox" id="show-timer" checked aria-label="Mostrar temporizador">
-                            <span>⏱️ Mostrar Temporizador</span>
+                            <span>Mostrar temporizador</span>
                         </label>
 
-                        <label style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                        <label class="checkbox-label">
                             <input type="checkbox" id="show-stats" checked aria-label="Mostrar estadísticas">
-                            <span>📊 Mostrar Estadísticas</span>
+                            <span>Mostrar estadísticas</span>
                         </label>
                     </div>
                 </div>
@@ -202,32 +201,36 @@ Tips:
             <div id="advanced-tab" class="tab-content" role="tabpanel">
                 <div class="control-section">
                     <h3 class="control-section__title">
-                        <span class="control-section__icon">⚙️</span>
+                        <span class="control-section__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
                         Configuración Avanzada
                     </h3>
 
                     <div class="button-group">
                         <button id="export-btn" class="btn btn-secondary">
-                            💾 Exportar Configuración
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Exportar Configuración
                         </button>
                         <button id="import-btn" class="btn btn-secondary">
-                            📥 Importar Configuración
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                            Importar Configuración
                         </button>
                     </div>
 
                     <div class="button-group" style="margin-top: var(--spacing-lg);">
                         <button id="save-settings-btn" class="btn btn-primary">
-                            ✅ Guardar Configuración
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                            Guardar Configuración
                         </button>
-                        <button id="reset-settings-btn" class="btn btn-danger">
-                            🔄 Restablecer Todo
+                        <button id="reset-settings-btn" class="btn btn-secondary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                            Restablecer Todo
                         </button>
                     </div>
                 </div>
 
                 <div class="control-section">
                     <h3 class="control-section__title">
-                        <span class="control-section__icon">ℹ️</span>
+                        <span class="control-section__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span>
                         Información
                     </h3>
                     <div class="card">
@@ -236,7 +239,7 @@ Tips:
                             <p><strong>Autor:</strong> Gustavo Campos Luna</p>
                             <p><strong>Licencia:</strong> MIT</p>
                             <p style="margin-top: var(--spacing-md);">
-                                <span class="badge">⌨️ Presiona H para ver atajos de teclado</span>
+                                <span class="badge">Presiona H para ver atajos de teclado</span>
                             </p>
                         </div>
                     </div>
@@ -246,19 +249,24 @@ Tips:
             <!-- Botones de Control Principal -->
             <div class="button-group">
                 <button id="play-btn" class="btn btn-primary">
-                    ▶️ Reproducir
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    Reproducir
                 </button>
-                <button id="pause-btn" class="btn btn-primary" disabled>
-                    ⏸️ Pausar
+                <button id="pause-btn" class="btn btn-secondary" disabled>
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                    Pausar
                 </button>
-                <button id="stop-btn" class="btn btn-danger" disabled>
-                    ⏹️ Detener
+                <button id="stop-btn" class="btn btn-secondary" disabled>
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="1"/></svg>
+                    Detener
                 </button>
                 <button id="reset-btn" class="btn btn-secondary">
-                    🔄 Reiniciar
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                    Reiniciar
                 </button>
-                <button id="fullscreen-btn" class="btn btn-success">
-                    🖥️ Pantalla Completa
+                <button id="fullscreen-btn" class="btn btn-secondary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+                    Pantalla Completa
                 </button>
             </div>
         </div>
@@ -302,20 +310,20 @@ Tips:
         <div id="fullscreen-controls" class="fullscreen-controls">
             <div class="fullscreen-control-panel">
                 <button id="fs-play-btn" class="fullscreen-btn" title="Reproducir" aria-label="Reproducir">
-                    ▶️
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
                 </button>
                 <button id="fs-pause-btn" class="fullscreen-btn" disabled title="Pausar" aria-label="Pausar">
-                    ⏸️
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                 </button>
                 <button id="fs-stop-btn" class="fullscreen-btn" disabled title="Detener" aria-label="Detener">
-                    ⏹️
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="1"/></svg>
                 </button>
                 <button id="fs-reset-btn" class="fullscreen-btn" title="Reiniciar" aria-label="Reiniciar">
-                    🔄
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
                 </button>
             </div>
             <button id="fs-exit-btn" class="fullscreen-btn fullscreen-btn-exit" title="Salir de pantalla completa" aria-label="Salir de pantalla completa">
-                ✕
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
         </div>
     </div>

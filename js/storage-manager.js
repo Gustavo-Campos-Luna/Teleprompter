@@ -116,20 +116,6 @@ class StorageManager {
     }
 
     /**
-     * Guarda el tema seleccionado
-     */
-    saveTheme(theme) {
-        return this.set(CONFIG.STORAGE.KEYS.THEME, theme);
-    }
-
-    /**
-     * Carga el tema guardado
-     */
-    loadTheme() {
-        return this.get(CONFIG.STORAGE.KEYS.THEME, CONFIG.DEFAULTS.THEME);
-    }
-
-    /**
      * Guarda un texto en el historial de textos recientes
      */
     addRecentText(text, metadata = {}) {
@@ -202,7 +188,6 @@ class StorageManager {
             version: CONFIG.APP.VERSION,
             timestamp: Date.now(),
             settings: this.loadSettings(),
-            theme: this.loadTheme(),
             recentTexts: this.getRecentTexts(),
             markers: this.loadMarkers(),
             notes: this.loadNotes()
@@ -219,7 +204,6 @@ class StorageManager {
             const data = JSON.parse(jsonString);
 
             if (data.settings) this.saveSettings(data.settings);
-            if (data.theme) this.saveTheme(data.theme);
             if (data.recentTexts) this.set(CONFIG.STORAGE.KEYS.RECENT_TEXTS, data.recentTexts);
             if (data.markers) this.saveMarkers(data.markers);
             if (data.notes) this.saveNotes(data.notes);

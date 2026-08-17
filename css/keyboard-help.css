@@ -10,32 +10,27 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     z-index: var(--z-index-modal);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: var(--spacing-xl);
-    animation: fadeIn var(--transition-base);
 }
 
 .keyboard-help-content {
-    background: var(--color-white);
-    border-radius: var(--border-radius-2xl);
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-xl);
     max-width: 900px;
     width: 100%;
     max-height: 90vh;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    box-shadow: var(--shadow-2xl);
-    animation: scaleIn var(--transition-base);
-}
-
-[data-theme="dark"] .keyboard-help-content {
-    background: var(--color-gray-800);
+    box-shadow: var(--shadow-xl);
 }
 
 .keyboard-help-header {
@@ -43,43 +38,40 @@
     align-items: center;
     justify-content: space-between;
     padding: var(--spacing-xl);
-    border-bottom: 2px solid var(--color-gray-200);
-}
-
-[data-theme="dark"] .keyboard-help-header {
-    border-bottom-color: var(--color-gray-700);
+    border-bottom: 1px solid var(--border);
 }
 
 .keyboard-help-header h2 {
-    font-size: var(--font-size-3xl);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-gray-900);
+    font-family: var(--font-family-display);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-primary);
     margin: 0;
 }
 
-[data-theme="dark"] .keyboard-help-header h2 {
-    color: var(--color-gray-100);
-}
-
 .keyboard-help-close {
-    width: 40px;
-    height: 40px;
-    border: none;
-    background: var(--color-gray-100);
-    color: var(--color-gray-700);
-    border-radius: 50%;
-    font-size: var(--font-size-xl);
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--border);
+    background: var(--panel-raised);
+    color: var(--text-secondary);
+    border-radius: var(--border-radius-md);
     cursor: pointer;
-    transition: all var(--transition-base);
+    transition: background var(--transition-fast), color var(--transition-fast);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+.keyboard-help-close svg {
+    width: 16px;
+    height: 16px;
+}
+
 .keyboard-help-close:hover {
-    background: var(--color-secondary-red);
-    color: var(--color-white);
-    transform: rotate(90deg);
+    background: var(--signal-red-subtle);
+    color: var(--signal-red);
+    border-color: var(--signal-red);
 }
 
 .keyboard-help-body {
@@ -87,31 +79,33 @@
     overflow-y: auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--spacing-xl);
+    gap: var(--spacing-lg);
 }
 
 .keyboard-help-section {
-    background: var(--color-gray-50);
+    background: var(--panel-raised);
+    border: 1px solid var(--border);
     border-radius: var(--border-radius-lg);
     padding: var(--spacing-lg);
 }
 
-[data-theme="dark"] .keyboard-help-section {
-    background: var(--color-gray-700);
-}
-
 .keyboard-help-section h3 {
-    font-size: var(--font-size-lg);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-gray-800);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
     margin: 0 0 var(--spacing-md) 0;
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
 }
 
-[data-theme="dark"] .keyboard-help-section h3 {
-    color: var(--color-gray-100);
+.keyboard-help-section h3 svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    color: var(--accent);
 }
 
 .keyboard-shortcut {
@@ -123,45 +117,29 @@
 }
 
 .keyboard-shortcut:not(:last-child) {
-    border-bottom: 1px solid var(--color-gray-200);
-}
-
-[data-theme="dark"] .keyboard-shortcut:not(:last-child) {
-    border-bottom-color: var(--color-gray-600);
+    border-bottom: 1px solid var(--border);
 }
 
 .keyboard-shortcut kbd {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 32px;
+    min-width: 28px;
     padding: var(--spacing-xs) var(--spacing-sm);
-    background: var(--color-white);
-    color: var(--color-gray-700);
-    border: 2px solid var(--color-gray-300);
-    border-radius: var(--border-radius-md);
+    background: var(--canvas);
+    color: var(--text-primary);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--border-radius-sm);
     font-family: var(--font-family-mono);
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-bold);
-    box-shadow: 0 2px 0 var(--color-gray-300);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
     text-transform: uppercase;
 }
 
-[data-theme="dark"] .keyboard-shortcut kbd {
-    background: var(--color-gray-600);
-    color: var(--color-gray-100);
-    border-color: var(--color-gray-500);
-    box-shadow: 0 2px 0 var(--color-gray-500);
-}
-
 .keyboard-shortcut span {
-    color: var(--color-gray-600);
+    color: var(--text-secondary);
     font-size: var(--font-size-sm);
     text-align: right;
-}
-
-[data-theme="dark"] .keyboard-shortcut span {
-    color: var(--color-gray-300);
 }
 
 /* Responsive */
@@ -175,7 +153,7 @@
     }
 
     .keyboard-help-header h2 {
-        font-size: var(--font-size-2xl);
+        font-size: var(--font-size-xl);
     }
 
     .keyboard-help-body {

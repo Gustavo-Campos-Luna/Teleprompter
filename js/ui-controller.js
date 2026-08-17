@@ -34,7 +34,6 @@ class UIController {
         this.elements.customSpeed = document.getElementById('custom-speed');
         this.elements.textColor = document.getElementById('text-color');
         this.elements.bgColor = document.getElementById('bg-color');
-        this.elements.theme = document.getElementById('theme');
         this.elements.readingGuide = document.getElementById('reading-guide');
 
         // Checkboxes
@@ -115,13 +114,6 @@ class UIController {
         if (this.elements.bgColor) {
             this.elements.bgColor.addEventListener('change', (e) => {
                 this.teleprompter.setBgColor(e.target.value);
-            });
-        }
-
-        // Tema
-        if (this.elements.theme) {
-            this.elements.theme.addEventListener('change', (e) => {
-                this.applyTheme(e.target.value);
             });
         }
 
@@ -283,16 +275,6 @@ class UIController {
             });
         }
 
-        // Temas
-        if (this.elements.theme) {
-            CONFIG.THEMES.forEach(theme => {
-                const option = document.createElement('option');
-                option.value = theme.value;
-                option.textContent = `${theme.icon} ${theme.label}`;
-                this.elements.theme.appendChild(option);
-            });
-        }
-
         // Colores de texto
         if (this.elements.textColor) {
             CONFIG.TEXT_COLORS.forEach(color => {
@@ -354,7 +336,8 @@ class UIController {
 
         if (this.elements.fileInfo) {
             this.elements.fileInfo.style.display = 'flex';
-            this.elements.fileInfo.innerHTML = '<span class="file-info__icon">📁</span> ' + CONFIG.MESSAGES.LOADING;
+            this.elements.fileInfo.className = 'file-info file-info--loading';
+            this.elements.fileInfo.innerHTML = '<span class="file-info__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></span> ' + CONFIG.MESSAGES.LOADING;
         }
 
         try {
@@ -368,7 +351,8 @@ class UIController {
 
             if (this.elements.fileInfo) {
                 const sizeKB = Math.round(file.size / 1024);
-                this.elements.fileInfo.innerHTML = `<span class="file-info__icon">✅</span> ${CONFIG.MESSAGES.FILE_LOADED}: ${file.name} (${sizeKB} KB)`;
+                this.elements.fileInfo.className = 'file-info';
+                this.elements.fileInfo.innerHTML = `<span class="file-info__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> ${CONFIG.MESSAGES.FILE_LOADED}: ${file.name} (${sizeKB} KB)`;
             }
 
             // Guardar en historial
@@ -379,7 +363,8 @@ class UIController {
         } catch (error) {
             console.error('Error al cargar archivo:', error);
             if (this.elements.fileInfo) {
-                this.elements.fileInfo.innerHTML = `<span class="file-info__icon">❌</span> ${CONFIG.MESSAGES.FILE_ERROR}`;
+                this.elements.fileInfo.className = 'file-info file-info--error';
+                this.elements.fileInfo.innerHTML = `<span class="file-info__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span> ${CONFIG.MESSAGES.FILE_ERROR}`;
             }
         }
     }
@@ -425,7 +410,9 @@ class UIController {
      */
     updateFullscreenButton() {
         if (this.elements.fullscreenBtn) {
-            const icon = this.teleprompter.isFullscreen ? '📱' : '🖥️';
+            const icon = this.teleprompter.isFullscreen
+                ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>'
+                : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>';
             const text = this.teleprompter.isFullscreen ? 'Salir Pantalla Completa' : 'Pantalla Completa';
             this.elements.fullscreenBtn.innerHTML = `${icon} ${text}`;
         }
@@ -454,14 +441,6 @@ class UIController {
                 content.classList.remove('active');
             }
         });
-    }
-
-    /**
-     * Aplica tema
-     */
-    applyTheme(themeName) {
-        document.documentElement.setAttribute('data-theme', themeName);
-        storageManager.saveTheme(themeName);
     }
 
     /**

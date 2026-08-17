@@ -303,11 +303,11 @@
 
     .scroll-text {
         transform: none !important;
-        color: var(--color-black) !important;
+        color: #000000 !important;
     }
 
     body {
-        background: var(--color-white);
+        background: #ffffff;
     }
 }
 
@@ -321,24 +321,11 @@
     }
 
     .teleprompter {
-        border: 3px solid var(--color-white);
+        border: 3px solid #ffffff;
     }
 
     .scroll-text p {
         font-weight: var(--font-weight-semibold);
-    }
-}
-
-/* === MODO OSCURO OS === */
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme]) {
-        --color-primary-start: #7c3aed;
-        --color-primary-end: #a855f7;
-        --gradient-primary: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
-    }
-
-    :root:not([data-theme]) body {
-        background: var(--gradient-primary);
     }
 }
 
@@ -369,10 +356,6 @@
 
     .tabs-nav {
         justify-content: flex-start;
-    }
-
-    .tab-icon {
-        font-size: var(--font-size-base);
     }
 
     .stats-overlay {

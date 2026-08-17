@@ -305,12 +305,14 @@ class KeyboardHandler {
         overlay.innerHTML = `
             <div class="keyboard-help-content">
                 <div class="keyboard-help-header">
-                    <h2>⌨️ Atajos de Teclado</h2>
-                    <button class="keyboard-help-close" onclick="keyboardHandler.toggleHelp()">✕</button>
+                    <h2>Atajos de Teclado</h2>
+                    <button class="keyboard-help-close" onclick="keyboardHandler.toggleHelp()" aria-label="Cerrar">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
                 </div>
                 <div class="keyboard-help-body">
                     <div class="keyboard-help-section">
-                        <h3>🎬 Reproducción</h3>
+                        <h3><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg> Reproducción</h3>
                         <div class="keyboard-shortcut">
                             <kbd>Espacio</kbd>
                             <span>Reproducir / Pausar</span>
@@ -326,7 +328,7 @@ class KeyboardHandler {
                     </div>
 
                     <div class="keyboard-help-section">
-                        <h3>⚡ Velocidad</h3>
+                        <h3><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Velocidad</h3>
                         <div class="keyboard-shortcut">
                             <kbd>↑</kbd>
                             <span>Aumentar velocidad</span>
@@ -338,7 +340,7 @@ class KeyboardHandler {
                     </div>
 
                     <div class="keyboard-help-section">
-                        <h3>📐 Visualización</h3>
+                        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg> Visualización</h3>
                         <div class="keyboard-shortcut">
                             <kbd>Ctrl</kbd> + <kbd>F</kbd>
                             <span>Pantalla completa</span>
@@ -358,7 +360,7 @@ class KeyboardHandler {
                     </div>
 
                     <div class="keyboard-help-section">
-                        <h3>📊 Información</h3>
+                        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Información</h3>
                         <div class="keyboard-shortcut">
                             <kbd>Ctrl</kbd> + <kbd>T</kbd>
                             <span>Mostrar/Ocultar temporizador</span>
@@ -370,7 +372,7 @@ class KeyboardHandler {
                     </div>
 
                     <div class="keyboard-help-section">
-                        <h3>📝 Herramientas</h3>
+                        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Herramientas</h3>
                         <div class="keyboard-shortcut">
                             <kbd>Ctrl</kbd> + <kbd>B</kbd>
                             <span>Agregar marcador</span>
@@ -382,7 +384,7 @@ class KeyboardHandler {
                     </div>
 
                     <div class="keyboard-help-section">
-                        <h3>❓ Ayuda</h3>
+                        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Ayuda</h3>
                         <div class="keyboard-shortcut">
                             <kbd>H</kbd>
                             <span>Mostrar/Ocultar esta ayuda</span>
